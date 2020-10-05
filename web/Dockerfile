@@ -1,0 +1,54 @@
+ARG PHP_EXTENSIONS="\
+    amqp \
+    apcu \
+    ast \
+    bcmath \
+    blackfire \
+    bz2 \
+    dba \
+    ds \
+    enchant \
+    ev \
+    event \
+    gd \
+    gettext \
+    gmp \
+    gnupg \
+    igbinary \
+    imagick \
+    imap \
+    intl \
+    ldap \
+    mailparse \
+    memcached \
+    mongodb \
+    msgpack \
+    mysqli \
+    pcov \
+    pdo_dblib \
+    pdo_mysql \
+    pdo_pgsql \
+    pdo_sqlite \
+    pgsql \
+    pspell \
+    rdkafka \
+    redis \
+    soap \
+    sqlite3 \
+    swoole \
+    tidy \
+    uploadprogress \
+    uuid \
+    xdebug \
+    xmlrpc \
+    yaml \
+    "
+
+FROM thecodingmachine/php:7.4-v3-slim-apache
+
+ENV APACHE_DOCUMENT_ROOT=/srv
+ENV PHP_INI_MEMORY_LIMIT=2048M
+ENV PHP_EXTENSION_XDEBUG=0
+ENV PHP_EXTENSION_BLACKFIRE=0
+
+WORKDIR /srv
