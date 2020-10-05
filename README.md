@@ -12,7 +12,7 @@
 
 ## Usage
 
-This stack is composed from:
+This stack is composed from these images:
 
 - `drupalista/web`
   - Based on `thecodingmachine/php:7.4-v3-slim-apache`
