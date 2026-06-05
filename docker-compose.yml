@@ -1,0 +1,43 @@
+services:
+  web:
+    image: drupalista/web:latest
+    build:
+      context: .
+      dockerfile: web/Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    environment:
+      STARTUP_COMMAND_1: composer install
+    volumes:
+      - ./:/srv:cached
+      - ./.data/redis:/tmp/docker:cached
+
+  postgresql:
+    image: postgres:12
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: drupal
+      POSTGRES_USER: drupal
+      POSTGRES_DB: drupal
+    volumes:
+      - ./.data/postgres:/var/lib/postgresql/data
+
+  adminer:
+    image: dockette/adminer:dg
+    restart: unless-stopped
+    ports:
+      - "8010:80"
+
+  redis:
+    image: drupalista/redis:latest
+    build:
+      context: .
+      dockerfile: redis/Dockerfile
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./.data/redis:/tmp/docker:cached
