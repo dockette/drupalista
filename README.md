@@ -1,7 +1,13 @@
 <h1 align=center>Dockette / Drupalista</h1>
 
 <p align=center>
-   🐳 Dockerized Drupal Stack
+   <a href="https://github.com/dockette/drupalista/actions"><img src="https://github.com/dockette/drupalista/actions/workflows/docker.yml/badge.svg" alt="GitHub Actions"></a>
+   <a href="https://github.com/sponsors/f3l1x"><img src="https://img.shields.io/badge/sponsor-GitHub%20Sponsors-ea4aaa" alt="GitHub Sponsors"></a>
+   <a href="https://github.com/orgs/dockette/discussions"><img src="https://img.shields.io/badge/support-discussions-6f42c1" alt="Support/Discussions"></a>
+</p>
+
+<p align=center>
+    🐳 Dockerized Drupal Stack
 </p>
 
 <p align=center>
@@ -11,6 +17,8 @@
 -----
 
 ## Usage
+
+This is a legacy Drupal stack. The baseline intentionally keeps PHP 7.4, Redis 5 and PostgreSQL 12 aligned with the original runtime instead of modernizing the application stack.
 
 This stack is composed from these images:
 
@@ -22,58 +30,14 @@ This stack is composed from these images:
   - Based on `redis:5`
   - Update using unix socket
 
-```yaml
-version: '3.6'
-
-services:
-  web:
-    image: drupalista/web
-    restart: unless-stopped
-    ports:
-      - 8000:80
-    environment:
-      - STARTUP_COMMAND_1=composer install
-    volumes:
-      - ./:/srv:cached
-      - ./.data/redis:/tmp/docker:cached
-
-  postgresql:
-    image: postgres:12
-    restart: unless-stopped
-    ports:
-      - 5432:5432
-    environment:
-      - POSTGRES_PASSWORD=drupal
-      - POSTGRES_USER=drupal
-      - POSTGRES_DB=drupal
-    volumes:
-      - ./.data/postgres:/var/lib/postgresql/data
-
-  adminer:
-    image: dockette/adminer:dg
-    restart: unless-stopped
-    ports:
-      - 8010:80
-
-  redis:
-    image: drupalista/redis
-    restart: unless-stopped
-    ports:
-      - 6379:6379
-    volumes:
-      - ./.data/redis:/tmp/docker:cached
+```bash
+make build
+make test
+make run
 ```
 
-## Development
+The checked-in `docker-compose.yml` exposes the web application on `8000`, Adminer on `8010`, PostgreSQL on `5432` and Redis on `6379`.
 
-See [how to contribute](https://contributte.org/contributing.html) to this package.
+## Maintenance
 
-This package is currently maintaining by these authors.
-
-<a href="https://github.com/f3l1x">
-    <img width="80" height="80" src="https://avatars2.githubusercontent.com/u/538058?v=3&s=80">
-</a>
-
------
-
-Consider to [support](https://github.com/sponsors/f3l1x) **f3l1x**. Also thank you for using this package.
+See [how to contribute](https://github.com/dockette/.github/blob/master/CONTRIBUTING.md) to this package. Consider to [support](https://github.com/sponsors/f3l1x) **f3l1x**. Thank you for using this package.
