@@ -1,5 +1,4 @@
 ARG PHP_EXTENSIONS="\
-    amqp \
     apcu \
     ast \
     bcmath \
