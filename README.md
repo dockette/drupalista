@@ -18,16 +18,16 @@
 
 ## Usage
 
-This is a legacy Drupal stack. The baseline intentionally keeps PHP 7.4, Redis 5 and PostgreSQL 12 aligned with the original runtime instead of modernizing the application stack.
+This is a legacy Drupal stack. The baseline intentionally runs on Debian 13 (trixie) with PHP 8.3 and Redis 8; PostgreSQL stays at 12.
 
 This stack is composed from these images:
 
 - `drupalista/web`
-  - Based on `thecodingmachine/php:7.4-v3-slim-apache`
-  - PHP: amqp, apcu, ast, bcmath, blackfire, bz2, calendar, Core, ctype, curl, date, dba, dom, ds, enchant, ev, event, exif, fileinfo, filter, ftp, gd, gettext, gmp, gnupg, hash, iconv, igbinary, imagick, imap, intl, json, ldap, libxml, mailparse, mbstring, memcached, mongodb, msgpack, mysqli, mysqlnd, openssl, pcntl, pcov, pcre, PDO, pdo_dblib, pdo_mysql, pdo_pgsql, pdo_sqlite, pgsql, Phar, posix, pspell, rdkafka, readline, redis, Reflection, session, shmop, SimpleXML, soap, sockets, sodium, SPL, sqlite3, standard, swoole, sysvmsg, sysvsem, sysvshm, tidy, tokenizer, uploadprogress, uuid, xdebug, xml, xmlreader, xmlrpc, xmlwriter, xsl, yaml, Zend OPcache, zip, zlib, Xdebug, Zend OPcache, blackfire
+  - Based on `php:8.3-apache-trixie` (Debian 13) with extensions from mlocati/docker-php-extension-installer
+  - PHP: amqp, apcu, ast, bcmath, blackfire, bz2, calendar, Core, ctype, curl, date, dba, dom, ds, enchant, ev, event, exif, fileinfo, filter, ftp, gd, gettext, gmp, gnupg, hash, iconv, igbinary, imagick, imap, intl, json, ldap, libxml, mailparse, mbstring, memcached, mongodb, msgpack, mysqli, mysqlnd, openssl, pcntl, pcov, pcre, PDO, pdo_dblib, pdo_mysql, pdo_pgsql, pdo_sqlite, pgsql, Phar, posix, pspell, rdkafka, readline, redis, Reflection, session, shmop, SimpleXML, soap, sockets, sodium, SPL, sqlite3, standard, swoole, sysvmsg, sysvsem, sysvshm, tidy, tokenizer, uploadprogress, uuid, xdebug, xml, xmlreader, xmlwriter, xsl, yaml, Zend OPcache, zip, zlib, Xdebug, Zend OPcache, blackfire
   - Workdir `/srv`
 - `drupalista/redis`
-  - Based on `redis:5`
+  - Based on `redis:8-trixie`
   - Update using unix socket
 
 ```bash

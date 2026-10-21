@@ -8,8 +8,8 @@ Dockette Drupalista is a legacy Dockerized Drupal stack. It builds two local ima
 
 - Web image: `drupalista/web:latest` from `web/Dockerfile`.
 - Redis image: `drupalista/redis:latest` from `redis/Dockerfile`.
-- The web image is based on `thecodingmachine/php:7.4-v3-slim-apache`; treat PHP 7.4 and the listed extensions as legacy constraints.
-- The Redis image is based on `redis:5` and adds `redis/redis.conf` for the Unix socket setup used by the Drupal stack.
+- The web image is based on `php:8.3-apache-trixie` (Debian 13); xmlrpc was dropped as it does not exist for PHP 8.
+- The Redis image is based on `redis:8-trixie` and adds `redis/redis.conf` for the Unix socket setup used by the Drupal stack.
 
 ## Commands
 
