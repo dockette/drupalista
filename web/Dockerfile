@@ -43,7 +43,7 @@ ARG PHP_EXTENSIONS="\
     yaml \
     "
 
-FROM php:8.3-apache-trixie
+FROM php:8.4-apache-trixie
 
 COPY --from=ghcr.io/mlocati/php-extension-installer:latest /usr/bin/install-php-extensions /usr/local/bin/
 COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
